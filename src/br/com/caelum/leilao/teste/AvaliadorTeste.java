@@ -14,13 +14,14 @@ public class AvaliadorTeste {
 
         Leilao leilao = new Leilao("Playstation 3");
 
-        leilao.propoe(new Lance(trixie, 300.0));
-        leilao.propoe(new Lance(katya, 400));
-        leilao.propoe(new Lance(jinkx, 250.0));
+        leilao.propoe(new Lance(trixie, 250.0));
+        leilao.propoe(new Lance(katya, 300.0));
+        leilao.propoe(new Lance(jinkx, 440.0));
 
         Avaliador avaliador = new Avaliador();
         avaliador.avalia(leilao);
 
         System.out.println(avaliador.getMaiorLance());
+        System.out.println(avaliador.getMenorLance());
     }
 }
