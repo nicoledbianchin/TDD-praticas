@@ -1,7 +1,7 @@
-package br.com.caelum.leilao.servico;
+package main.com.thoughtworks.lance.service;
 
-import br.com.caelum.leilao.dominio.Leilao;
-import br.com.caelum.leilao.dominio.Lance;
+import main.com.thoughtworks.lance.domain.Leilao;
+import main.com.thoughtworks.lance.domain.Lance;
 
 public class Avaliador {
 
@@ -11,7 +11,7 @@ public class Avaliador {
     public void avalia(Leilao leilao) {
         for(Lance lance : leilao.getLances()) {
             if (lance.getValor() > maiorDeTodos) maiorDeTodos = lance.getValor();
-            else if (lance.getValor() < menorDeTodos) menorDeTodos = lance.getValor();
+            if (lance.getValor() < menorDeTodos) menorDeTodos = lance.getValor();
         }
     }
 

@@ -1,4 +1,4 @@
-package br.com.caelum.leilao.dominio;
+package main.com.thoughtworks.lance.domain;
 
 public class Usuario {
 
