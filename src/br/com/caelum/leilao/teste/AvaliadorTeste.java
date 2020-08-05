@@ -21,7 +21,10 @@ public class AvaliadorTeste {
         Avaliador avaliador = new Avaliador();
         avaliador.avalia(leilao);
 
-        System.out.println(avaliador.getMaiorLance());
-        System.out.println(avaliador.getMenorLance());
+        double maiorEsperado = 400;
+        double menorEsperado = 250;
+
+        System.out.println(maiorEsperado == avaliador.getMaiorLance());
+        System.out.println(menorEsperado == avaliador.getMenorLance());
     }
 }
