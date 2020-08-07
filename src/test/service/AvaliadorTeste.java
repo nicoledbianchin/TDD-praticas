@@ -8,9 +8,7 @@ import main.com.thoughtworks.lance.service.Avaliador;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AvaliadorTeste {
@@ -59,11 +57,24 @@ public class AvaliadorTeste {
         lances.add(lanceJinkx.getValor());
 
         Avaliador avaliador = new Avaliador();
-        avaliador.calculaMedia(lances);
+        avaliador.calculaMedia(leilao.getLances());
         double mediaAtual = avaliador.getMedia();
 
         double mediaEsperada = 316.666666666666;
 
         Assert.assertEquals(mediaEsperada, mediaAtual, 0.00001);
+    }
+
+    @Test
+    public void deveRetornarZer0() {
+        Usuario trixie = new Usuario("Trixie");
+
+        Leilao leilao = new Leilao("Televisão");
+
+        Avaliador avaliador = new Avaliador();
+        avaliador.calculaMedia(leilao.getLances());
+        double media = avaliador.getMedia();
+
+        Assert.assertEquals(0, media, 0.0001);
     }
 }

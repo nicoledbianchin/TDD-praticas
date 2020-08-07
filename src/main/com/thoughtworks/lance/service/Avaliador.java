@@ -18,15 +18,17 @@ public class Avaliador {
         }
     }
 
-    public double calculaMedia(List<Double> valores) {
+    public void calculaMedia(List<Lance> lances) {
         double soma = 0;
-        int quantidade = 0;
-        for (double valor : valores) {
-            soma = soma + valor;
-            quantidade++;
+        if (lances.size() == 0) {
+            media = 0;
+        } else {
+            for (Lance lance : lances) {
+                double valor = lance.getValor();
+                soma = soma + valor;
+            }
+            media = soma / lances.size();
         }
-        media = soma / quantidade;
-        return media;
     }
 
     public double getMaiorLance() {
