@@ -11,6 +11,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class AvaliadorTeste {
 
     @Test
@@ -32,8 +34,8 @@ public class AvaliadorTeste {
         double menorEsperado = 250;
 
 
-        Assert.assertEquals(maiorEsperado, avaliador.getMaiorLance(), 0.000001);
-        Assert.assertEquals(menorEsperado, avaliador.getMenorLance(), 0.000001);
+        assertEquals(maiorEsperado, avaliador.getMaiorLance(), 0.000001);
+        assertEquals(menorEsperado, avaliador.getMenorLance(), 0.000001);
     }
 
     @Test
@@ -62,7 +64,7 @@ public class AvaliadorTeste {
 
         double mediaEsperada = 316.666666666666;
 
-        Assert.assertEquals(mediaEsperada, mediaAtual, 0.00001);
+        assertEquals(mediaEsperada, mediaAtual, 0.00001);
     }
 
     @Test
@@ -75,6 +77,21 @@ public class AvaliadorTeste {
         avaliador.calculaMedia(leilao.getLances());
         double media = avaliador.getMedia();
 
-        Assert.assertEquals(0, media, 0.0001);
+        assertEquals(0, media, 0.0001);
+    }
+
+    @Test
+    public void deveEntenderLeilaoComUmLance() {
+        Usuario trixie = new Usuario("Trixie");
+
+        Leilao leilao = new Leilao("Playstation 3");
+
+        leilao.propoe(new Lance(trixie, 1000.0));
+
+        Avaliador avaliador = new Avaliador();
+        avaliador.avalia(leilao);
+
+        assertEquals(1000.0, avaliador.getMaiorLance(), 0.00001);
+        assertEquals(1000.0, avaliador.getMenorLance(), 0.00001);
     }
 }
