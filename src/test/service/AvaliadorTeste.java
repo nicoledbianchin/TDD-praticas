@@ -7,7 +7,6 @@ import main.com.thoughtworks.lance.service.Avaliador;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -45,17 +44,9 @@ public class AvaliadorTeste {
 
         Leilao leilao = new Leilao("Playstation 3");
 
-        Lance lanceTrixie = new Lance(trixie, 250.0);
-        leilao.propoe(lanceTrixie);
-        Lance lanceKatya = new Lance(katya, 300.0);
-        leilao.propoe(lanceKatya);
-        Lance lanceJinkx = new Lance(jinkx, 400.0);
-        leilao.propoe(lanceJinkx);
-
-        List<Double> lances = new ArrayList<>();
-        lances.add(lanceTrixie.getValor());
-        lances.add(lanceKatya.getValor());
-        lances.add(lanceJinkx.getValor());
+        leilao.propoe(new Lance(trixie, 250.0));
+        leilao.propoe(new Lance(katya, 300.0));
+        leilao.propoe(new Lance(jinkx, 400.0));
 
         Avaliador avaliador = new Avaliador();
         avaliador.calculaMedia(leilao.getLances());
@@ -115,5 +106,45 @@ public class AvaliadorTeste {
         assertEquals(400, maiores.get(0).getValor(), 0.00001);
         assertEquals(300, maiores.get(1).getValor(), 0.00001);
         assertEquals(200, maiores.get(2).getValor(), 0.00001);
+    }
+
+    @Test
+    public void deveEncontrarLancesEmOrdemAleatoria() {
+        Usuario trixie = new Usuario("Trixie");
+        Usuario katya = new Usuario("Katya");
+
+        Leilao leilao = new Leilao("Playstation 3");
+
+        leilao.propoe(new Lance(trixie, 200.0));
+        leilao.propoe(new Lance(katya, 450.0));
+        leilao.propoe(new Lance(trixie, 120.0));
+        leilao.propoe(new Lance(katya, 700.0));
+        leilao.propoe(new Lance(trixie, 630.0));
+        leilao.propoe(new Lance(katya, 230.0));
+
+        Avaliador avaliador = new Avaliador();
+        avaliador.avalia(leilao);
+
+        assertEquals(700, avaliador.getMaiorLance(), 0.00001);
+        assertEquals(120, avaliador.getMenorLance(), 0.00001);
+    }
+
+    @Test
+    public void deveEncontrarLancesEmOrdemDecrescente() {
+        Usuario trixie = new Usuario("Trixie");
+        Usuario katya = new Usuario("Katya");
+
+        Leilao leilao = new Leilao("Playstation 3");
+
+        leilao.propoe(new Lance(trixie, 400.0));
+        leilao.propoe(new Lance(katya, 300.0));
+        leilao.propoe(new Lance(trixie, 200.0));
+        leilao.propoe(new Lance(katya, 100.0));
+
+        Avaliador avaliador = new Avaliador();
+        avaliador.avalia(leilao);
+
+        assertEquals(400, avaliador.getMaiorLance(), 0.00001);
+        assertEquals(100, avaliador.getMenorLance(), 0.00001);
     }
 }
