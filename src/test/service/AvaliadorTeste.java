@@ -5,7 +5,6 @@ import main.com.thoughtworks.lance.domain.Leilao;
 import main.com.thoughtworks.lance.domain.Usuario;
 import main.com.thoughtworks.lance.service.Avaliador;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -93,5 +92,28 @@ public class AvaliadorTeste {
 
         assertEquals(1000.0, avaliador.getMaiorLance(), 0.00001);
         assertEquals(1000.0, avaliador.getMenorLance(), 0.00001);
+    }
+
+    @Test
+    public void deveEncontrarOsTresMaioresLances() {
+        Usuario trixie = new Usuario("Trixie");
+        Usuario katya = new Usuario("Katya");
+
+        Leilao leilao = new Leilao("Playstation 3");
+
+        leilao.propoe(new Lance(trixie, 100.0));
+        leilao.propoe(new Lance(katya, 200.0));
+        leilao.propoe(new Lance(trixie, 300.0));
+        leilao.propoe(new Lance(katya, 400.0));
+
+        Avaliador avaliador = new Avaliador();
+        avaliador.avalia(leilao);
+
+        List<Lance> maiores = avaliador.getTresMaiores();
+
+        assertEquals(3, maiores.size());
+        assertEquals(400, maiores.get(0).getValor(), 0.00001);
+        assertEquals(300, maiores.get(1).getValor(), 0.00001);
+        assertEquals(200, maiores.get(2).getValor(), 0.00001);
     }
 }
