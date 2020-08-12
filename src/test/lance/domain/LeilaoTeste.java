@@ -33,4 +33,16 @@ public class LeilaoTeste {
         assertEquals(2000, leilao.getLances().get(1).getValor(), 0.00001);
         assertEquals(4000, leilao.getLances().get(2).getValor(), 0.00001);
     }
+
+    @Test
+    public void naoDeveAceitarDoisLancesSeguidosDoMesmoUsuario() {
+        Leilao leilao = new Leilao("Playstation 3");
+        Usuario trixie = new Usuario("trixie");
+
+        leilao.propoe(new Lance(trixie, 3000));
+        leilao.propoe(new Lance(trixie, 2000));
+
+        assertEquals(1, leilao.getLances().size());
+        assertEquals(3000, leilao.getLances().get(0).getValor(), 0.00001);
+    }
 }
