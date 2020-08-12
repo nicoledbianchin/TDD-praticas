@@ -1,4 +1,4 @@
-package test.service;
+package test.lance.service;
 
 import main.com.thoughtworks.lance.domain.Lance;
 import main.com.thoughtworks.lance.domain.Leilao;
