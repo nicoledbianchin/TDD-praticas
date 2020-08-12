@@ -15,7 +15,7 @@ public class MatematicaTest {
 
         int resultado = calculadora.conta(31);
 
-        Assert.assertThat(resultado, is(equalTo(124)));
+        Assert.assertThat(resultado, is(equalTo(31*4)));
     }
 
     @Test
@@ -24,7 +24,7 @@ public class MatematicaTest {
 
         int resultado = calculadora.conta(11);
 
-        Assert.assertThat(resultado, is(equalTo(33)));
+        Assert.assertThat(resultado, is(equalTo(11*3)));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class MatematicaTest {
 
         int resultado = calculadora.conta(30);
 
-        Assert.assertThat(resultado, is(equalTo(90)));
+        Assert.assertThat(resultado, is(equalTo(30*3)));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class MatematicaTest {
 
         int resultado = calculadora.conta(8);
 
-        Assert.assertThat(resultado, is(equalTo(16)));
+        Assert.assertThat(resultado, is(equalTo(8*2)));
     }
 
     @Test
@@ -51,6 +51,6 @@ public class MatematicaTest {
 
         int resultado = calculadora.conta(10);
 
-        Assert.assertThat(resultado, is(equalTo(20)));
+        Assert.assertThat(resultado, is(equalTo(10*2)));
     }
 }
