@@ -4,7 +4,6 @@ import main.com.thoughtworks.lance.domain.Leilao;
 import main.com.thoughtworks.lance.domain.Lance;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -26,15 +25,15 @@ public class Avaliador {
 
     private void pegaOsMaiores(Leilao leilao) {
         maiores = new ArrayList<Lance>(leilao.getLances());
-        Collections.sort(maiores, new Comparator<Lance>() {
+        maiores.sort(new Comparator<Lance>() {
             @Override
             public int compare(Lance o1, Lance o2) {
-                if(o1.getValor() < o2.getValor()) return 1;
-                if(o1.getValor() > o2.getValor()) return -1;
+                if (o1.getValor() < o2.getValor()) return 1;
+                if (o1.getValor() > o2.getValor()) return -1;
                 return 0;
             }
         });
-        maiores = maiores.subList(0, maiores.size() > 3 ? 3 : maiores.size());
+        maiores = maiores.subList(0, Math.min(maiores.size(), 3));
 
     }
 
