@@ -15,9 +15,13 @@ public class Leilao {
 	}
 	
 	public void propoe(Lance lance) {
-		if (lances.isEmpty() || !lances.get(lances.size() -1).getUsuario().equals(lance.getUsuario())){
+		if (lances.isEmpty() || !pegaUltimoLance().getUsuario().equals(lance.getUsuario())){
 			lances.add(lance);
 		}
+	}
+
+	private Lance pegaUltimoLance() {
+		return lances.get(lances.size() - 1);
 	}
 
 	public String getDescricao() {
