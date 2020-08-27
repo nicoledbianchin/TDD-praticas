@@ -74,11 +74,23 @@ public class LeilaoTeste {
     public void deveDobrarLanceDoUsuarioComApenasUmLance() {
         Leilao leilao = new Leilao("playstation 3");
         Usuario trixie = new Usuario("trixie");
+        Usuario katya = new Usuario("katya");
 
         leilao.propoe(new Lance(trixie, 200));
-        Lance lance = leilao.dobraLance(trixie);
+        leilao.propoe(new Lance(katya, 600));
+        leilao.dobraLance(trixie);
 
-        assertEquals(400, lance.getValor(), 0.00001);
+        assertEquals(400, leilao.getLances().get(2).getValor(), 0.00001);
+    }
+
+    @Test
+    public void naoDeveProporNovoLance() {
+        Leilao leilao = new Leilao("playstation 3");
+        Usuario trixie = new Usuario("trixie");
+
+        leilao.dobraLance(trixie);
+
+        assertEquals(0, leilao.getLances().size());
     }
 
 }

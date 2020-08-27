@@ -43,18 +43,18 @@ public class Leilao {
 		return Collections.unmodifiableList(lances);
 	}
 
-	public Lance dobraLance(Usuario usuario) {
+	public void dobraLance(Usuario usuario) {
 		Lance ultimoLance = pegarUltimoLanceDoUsuario(usuario);
-		return new Lance(usuario, ultimoLance.getValor() * 2);
+		if (ultimoLance != null) propoe(new Lance(usuario, ultimoLance.getValor() * 2));
 	}
 
-	public Lance pegarUltimoLanceDoUsuario(Usuario usuario) {
-		Lance ultimo = null;
+	private Lance pegarUltimoLanceDoUsuario(Usuario usuario) {
+		Lance ultimoLance = null;
 		for (Lance lance : lances) {
-			if (lance.getUsuario() == usuario) {
-				ultimo = lance;
-			}
+			if (lance.getUsuario().equals(usuario)) ultimoLance = lance;
 		}
-		return ultimo;
+		return ultimoLance;
 	}
+
+
 }
