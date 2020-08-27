@@ -1,6 +1,6 @@
-package test.matematica;
+package matematica.test;
 
-import main.com.thoughtworks.matematica.Calculadora;
+import matematica.main.Calculadora;
 import org.junit.Assert;
 import org.junit.Test;
 

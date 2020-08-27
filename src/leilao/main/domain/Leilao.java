@@ -1,4 +1,4 @@
-package main.com.thoughtworks.lance.domain;
+package leilao.main.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;

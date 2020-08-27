@@ -1,4 +1,4 @@
-package main.com.thoughtworks.lance.domain;
+package leilao.main.domain;
 
 public class Usuario {
 

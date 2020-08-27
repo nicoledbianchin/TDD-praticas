@@ -1,4 +1,4 @@
-package main.com.thoughtworks.matematica;
+package matematica.main;
 
 public class Calculadora {
 

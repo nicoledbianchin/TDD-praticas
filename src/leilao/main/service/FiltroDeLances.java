@@ -1,6 +1,6 @@
-package main.com.thoughtworks.lance.service;
+package leilao.main.service;
 
-import main.com.thoughtworks.lance.domain.Lance;
+import leilao.main.domain.Lance;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
-package test.lance.service;
+package leilao.test.service;
 
-import main.com.thoughtworks.lance.domain.Lance;
-import main.com.thoughtworks.lance.domain.Leilao;
-import main.com.thoughtworks.lance.domain.Usuario;
-import main.com.thoughtworks.lance.service.Avaliador;
+import leilao.main.domain.Lance;
+import leilao.main.domain.Leilao;
+import leilao.main.domain.Usuario;
+import leilao.main.service.Avaliador;
 
 import org.junit.Test;
 

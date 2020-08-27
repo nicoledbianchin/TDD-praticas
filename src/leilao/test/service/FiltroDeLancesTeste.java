@@ -1,8 +1,8 @@
-package test.lance.service;
+package leilao.test.service;
 
-import main.com.thoughtworks.lance.domain.Lance;
-import main.com.thoughtworks.lance.domain.Usuario;
-import main.com.thoughtworks.lance.service.FiltroDeLances;
+import leilao.main.domain.Lance;
+import leilao.main.domain.Usuario;
+import leilao.main.service.FiltroDeLances;
 import org.junit.Test;
 
 import java.util.Arrays;

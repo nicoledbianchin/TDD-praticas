@@ -1,8 +1,8 @@
-package test.lance.domain;
+package leilao.test.domain;
 
-import main.com.thoughtworks.lance.domain.Lance;
-import main.com.thoughtworks.lance.domain.Leilao;
-import main.com.thoughtworks.lance.domain.Usuario;
+import leilao.main.domain.Lance;
+import leilao.main.domain.Leilao;
+import leilao.main.domain.Usuario;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
