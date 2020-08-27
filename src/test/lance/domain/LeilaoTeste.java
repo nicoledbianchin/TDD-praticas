@@ -68,7 +68,17 @@ public class LeilaoTeste {
 
         assertEquals(10, leilao.getLances().size());
         assertEquals(600, leilao.getLances().get(leilao.getLances().size() - 1).getValor(), 0.00001);
+    }
 
+    @Test
+    public void deveDobrarLanceDoUsuarioComApenasUmLance() {
+        Leilao leilao = new Leilao("playstation 3");
+        Usuario trixie = new Usuario("trixie");
+
+        leilao.propoe(new Lance(trixie, 200));
+        Lance lance = leilao.dobraLance(trixie);
+
+        assertEquals(400, lance.getValor(), 0.00001);
     }
 
 }

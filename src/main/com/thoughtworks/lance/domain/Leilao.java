@@ -39,12 +39,17 @@ public class Leilao {
 		return !pegarUltimoLance().getUsuario().equals(usuario) && pegarQuantidadeLancesDoUsuario(usuario) < 5;
 	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-
 	public List<Lance> getLances() {
 		return Collections.unmodifiableList(lances);
 	}
 
+	public Lance dobraLance(Usuario usuario) {
+		Lance ultimo = null;
+		for (Lance lance : lances) {
+			if (lance.getUsuario() == usuario) {
+				ultimo = lance;
+			}
+		}
+		return new Lance(usuario, ultimo.getValor() * 2);
+	}
 }
