@@ -8,12 +8,12 @@ public class Leilao {
 
 	private String descricao;
 	private List<Lance> lances;
-	
+
 	public Leilao(String descricao) {
 		this.descricao = descricao;
 		this.lances = new ArrayList<Lance>();
 	}
-	
+
 	public void propoe(Lance lance) {
 		if (lances.isEmpty() || (podeDarNovoLance(lance.getUsuario()))){
 			lances.add(lance);
@@ -44,12 +44,17 @@ public class Leilao {
 	}
 
 	public Lance dobraLance(Usuario usuario) {
+		Lance ultimoLance = pegarUltimoLanceDoUsuario(usuario);
+		return new Lance(usuario, ultimoLance.getValor() * 2);
+	}
+
+	public Lance pegarUltimoLanceDoUsuario(Usuario usuario) {
 		Lance ultimo = null;
 		for (Lance lance : lances) {
 			if (lance.getUsuario() == usuario) {
 				ultimo = lance;
 			}
 		}
-		return new Lance(usuario, ultimo.getValor() * 2);
+		return ultimo;
 	}
 }
