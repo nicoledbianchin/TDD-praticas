@@ -15,17 +15,20 @@ import static org.junit.Assert.assertEquals;
 public class AvaliadorTeste {
 
     private Avaliador avaliador;
+    private Usuario trixie;
+    private Usuario katya;
+    private Usuario jinkx;
+
     @Before
-    public void criaAvaliador() {
+    public void setup() {
         this.avaliador = new Avaliador();
+        this.trixie = new Usuario("Trixie");
+        this.katya = new Usuario("Katya");
+        this.jinkx =  new Usuario("Jinkx");
     }
 
     @Test
     public void deveEntenderLancesEmOrdemDescrescente() {
-        Usuario trixie = new Usuario("Trixie");
-        Usuario katya = new Usuario("Katya");
-        Usuario jinkx = new Usuario("Jinkx");
-
         Leilao leilao = new Leilao("Playstation 3");
 
         leilao.propoe(new Lance(trixie, 250.0));
@@ -44,10 +47,6 @@ public class AvaliadorTeste {
 
     @Test
     public void deveCalcularMedia() {
-        Usuario trixie = new Usuario("Trixie");
-        Usuario katya = new Usuario("Katya");
-        Usuario jinkx = new Usuario("Jinkx");
-
         Leilao leilao = new Leilao("Playstation 3");
 
         leilao.propoe(new Lance(trixie, 250.0));
@@ -64,8 +63,6 @@ public class AvaliadorTeste {
 
     @Test
     public void deveRetornarZer0() {
-        Usuario trixie = new Usuario("Trixie");
-
         Leilao leilao = new Leilao("Televisão");
 
         avaliador.calculaMedia(leilao.getLances());
@@ -76,8 +73,6 @@ public class AvaliadorTeste {
 
     @Test
     public void deveEntenderLeilaoComUmLance() {
-        Usuario trixie = new Usuario("Trixie");
-
         Leilao leilao = new Leilao("Playstation 3");
 
         leilao.propoe(new Lance(trixie, 1000.0));
@@ -90,9 +85,6 @@ public class AvaliadorTeste {
 
     @Test
     public void deveEncontrarOsTresMaioresLances() {
-        Usuario trixie = new Usuario("Trixie");
-        Usuario katya = new Usuario("Katya");
-
         Leilao leilao = new Leilao("Playstation 3");
 
         leilao.propoe(new Lance(trixie, 100.0));
@@ -112,9 +104,6 @@ public class AvaliadorTeste {
 
     @Test
     public void deveEncontrarLancesEmOrdemAleatoria() {
-        Usuario trixie = new Usuario("Trixie");
-        Usuario katya = new Usuario("Katya");
-
         Leilao leilao = new Leilao("Playstation 3");
 
         leilao.propoe(new Lance(trixie, 200.0));
@@ -132,9 +121,6 @@ public class AvaliadorTeste {
 
     @Test
     public void deveEncontrarLancesEmOrdemDecrescente() {
-        Usuario trixie = new Usuario("Trixie");
-        Usuario katya = new Usuario("Katya");
-
         Leilao leilao = new Leilao("Playstation 3");
 
         leilao.propoe(new Lance(trixie, 400.0));
@@ -150,9 +136,6 @@ public class AvaliadorTeste {
 
     @Test
     public void deveEncontrarTresMaioresEmCincoLances() {
-        Usuario trixie = new Usuario("Trixie");
-        Usuario katya = new Usuario("Katya");
-
         Leilao leilao = new Leilao("Playstation 3");
 
         leilao.propoe(new Lance(trixie, 400.0));
@@ -173,9 +156,6 @@ public class AvaliadorTeste {
 
     @Test
     public void deveEncontrarDoisMaioresEmDoisLances() {
-        Usuario trixie = new Usuario("Trixie");
-        Usuario katya = new Usuario("Katya");
-
         Leilao leilao = new Leilao("Playstation 3");
 
         leilao.propoe(new Lance(trixie, 400.0));
@@ -190,13 +170,11 @@ public class AvaliadorTeste {
         assertEquals(300, maiores.get(1).getValor(), 0.00001);
     }
 
-    @Test
+     @Test
     public void deveEncontrarlistaVazia() {
-        Usuario trixie = new Usuario("Trixie");
-
         Leilao leilao = new Leilao("Playstation 3");
 
-        avaliador.avalia(leilao);
+         avaliador.avalia(leilao);
 
         List<Lance> maiores = avaliador.getTresMaiores();
 
