@@ -13,6 +13,12 @@ import static org.junit.Assert.assertEquals;
 
 public class AvaliadorTeste {
 
+    private Avaliador avaliador;
+
+    private void criaAvaliador() {
+        this.avaliador = new Avaliador();
+    }
+
     @Test
     public void deveEntenderLancesEmOrdemDescrescente() {
         Usuario trixie = new Usuario("Trixie");
@@ -25,7 +31,7 @@ public class AvaliadorTeste {
         leilao.propoe(new Lance(katya, 300.0));
         leilao.propoe(new Lance(jinkx, 400.0));
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.avalia(leilao);
 
         double maiorEsperado = 400;
@@ -48,7 +54,7 @@ public class AvaliadorTeste {
         leilao.propoe(new Lance(katya, 300.0));
         leilao.propoe(new Lance(jinkx, 400.0));
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.calculaMedia(leilao.getLances());
         double mediaAtual = avaliador.getMedia();
 
@@ -63,7 +69,7 @@ public class AvaliadorTeste {
 
         Leilao leilao = new Leilao("Televisão");
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.calculaMedia(leilao.getLances());
         double media = avaliador.getMedia();
 
@@ -78,7 +84,7 @@ public class AvaliadorTeste {
 
         leilao.propoe(new Lance(trixie, 1000.0));
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.avalia(leilao);
 
         assertEquals(1000.0, avaliador.getMaiorLance(), 0.00001);
@@ -97,7 +103,7 @@ public class AvaliadorTeste {
         leilao.propoe(new Lance(trixie, 300.0));
         leilao.propoe(new Lance(katya, 400.0));
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.avalia(leilao);
 
         List<Lance> maiores = avaliador.getTresMaiores();
@@ -122,7 +128,7 @@ public class AvaliadorTeste {
         leilao.propoe(new Lance(trixie, 630.0));
         leilao.propoe(new Lance(katya, 230.0));
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.avalia(leilao);
 
         assertEquals(700, avaliador.getMaiorLance(), 0.00001);
@@ -141,7 +147,7 @@ public class AvaliadorTeste {
         leilao.propoe(new Lance(trixie, 200.0));
         leilao.propoe(new Lance(katya, 100.0));
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.avalia(leilao);
 
         assertEquals(400, avaliador.getMaiorLance(), 0.00001);
@@ -161,7 +167,7 @@ public class AvaliadorTeste {
         leilao.propoe(new Lance(katya, 100.0));
         leilao.propoe(new Lance(trixie, 700.0));
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.avalia(leilao);
 
         List<Lance> maiores = avaliador.getTresMaiores();
@@ -182,7 +188,7 @@ public class AvaliadorTeste {
         leilao.propoe(new Lance(trixie, 400.0));
         leilao.propoe(new Lance(katya, 300.0));
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.avalia(leilao);
 
         List<Lance> maiores = avaliador.getTresMaiores();
@@ -198,7 +204,7 @@ public class AvaliadorTeste {
 
         Leilao leilao = new Leilao("Playstation 3");
 
-        Avaliador avaliador = new Avaliador();
+        criaAvaliador();
         avaliador.avalia(leilao);
 
         List<Lance> maiores = avaliador.getTresMaiores();
