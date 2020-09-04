@@ -28,6 +28,14 @@ public class AvaliadorTeste {
         this.jinkx =  new Usuario("Jinkx");
     }
 
+    @Test(expected = RuntimeException.class)
+    public void naoDeveAvaliarLeilaoSemNenhumLanceDado() {
+        Leilao leilao = new CriadorDeLeilao().para("Playstation 3")
+                .constroi();
+
+        avaliador.avalia(leilao);
+    }
+
     @Test
     public void deveEntenderLancesEmOrdemDescrescente() {
         Leilao leilao = new CriadorDeLeilao().para("Playstation 3")
@@ -172,7 +180,7 @@ public class AvaliadorTeste {
         assertEquals(300, maiores.get(1).getValor(), 0.00001);
     }
 
-     @Test
+     @Test(expected = RuntimeException.class)
     public void deveEncontrarlistaVazia() {
         Leilao leilao = new CriadorDeLeilao().para("Playstation 3")
                 .constroi();
