@@ -11,7 +11,8 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 
 public class AvaliadorTeste {
 
@@ -49,8 +50,8 @@ public class AvaliadorTeste {
         double maiorEsperado = 400;
         double menorEsperado = 250;
 
-        assertEquals(maiorEsperado, avaliador.getMaiorLance(), 0.000001);
-        assertEquals(menorEsperado, avaliador.getMenorLance(), 0.000001);
+        assertThat(avaliador.getMaiorLance(), equalTo(maiorEsperado));
+        assertThat(avaliador.getMenorLance(), equalTo(menorEsperado));
     }
 
     @Test
@@ -64,9 +65,9 @@ public class AvaliadorTeste {
         avaliador.calculaMedia(leilao.getLances());
         double mediaAtual = avaliador.getMedia();
 
-        double mediaEsperada = 316.666666666666;
+        double mediaEsperada = 316.6666666666667;
 
-        assertEquals(mediaEsperada, mediaAtual, 0.00001);
+        assertThat(mediaAtual, equalTo(mediaEsperada));
     }
 
     @Test
@@ -77,7 +78,7 @@ public class AvaliadorTeste {
         avaliador.calculaMedia(leilao.getLances());
         double media = avaliador.getMedia();
 
-        assertEquals(0, media, 0.0001);
+        assertThat(media, equalTo(0.0));
     }
 
     @Test
@@ -88,8 +89,8 @@ public class AvaliadorTeste {
 
         avaliador.avalia(leilao);
 
-        assertEquals(1000.0, avaliador.getMaiorLance(), 0.00001);
-        assertEquals(1000.0, avaliador.getMenorLance(), 0.00001);
+        assertThat(avaliador.getMaiorLance(), equalTo(1000.0));
+        assertThat(avaliador.getMenorLance(), equalTo(1000.0));
     }
 
     @Test
@@ -106,10 +107,10 @@ public class AvaliadorTeste {
 
         List<Lance> maiores = avaliador.getTresMaiores();
 
-        assertEquals(3, maiores.size());
-        assertEquals(400, maiores.get(0).getValor(), 0.00001);
-        assertEquals(300, maiores.get(1).getValor(), 0.00001);
-        assertEquals(200, maiores.get(2).getValor(), 0.00001);
+        assertThat(maiores.size(), equalTo(3));
+        assertThat(maiores.get(0).getValor(), equalTo(400.0));
+        assertThat(maiores.get(1).getValor(), equalTo(300.0));
+        assertThat(maiores.get(2).getValor(), equalTo(200.0));
     }
 
     @Test
@@ -125,8 +126,8 @@ public class AvaliadorTeste {
 
         avaliador.avalia(leilao);
 
-        assertEquals(700, avaliador.getMaiorLance(), 0.00001);
-        assertEquals(120, avaliador.getMenorLance(), 0.00001);
+        assertThat(avaliador.getMaiorLance(), equalTo(700.0));
+        assertThat(avaliador.getMenorLance(), equalTo(120.0));
     }
 
     @Test
@@ -140,8 +141,8 @@ public class AvaliadorTeste {
 
         avaliador.avalia(leilao);
 
-        assertEquals(400, avaliador.getMaiorLance(), 0.00001);
-        assertEquals(100, avaliador.getMenorLance(), 0.00001);
+        assertThat(avaliador.getMaiorLance(), equalTo(400.0));
+        assertThat(avaliador.getMenorLance(), equalTo(100.0));
     }
 
     @Test
@@ -158,10 +159,10 @@ public class AvaliadorTeste {
 
         List<Lance> maiores = avaliador.getTresMaiores();
 
-        assertEquals(3, maiores.size());
-        assertEquals(700, maiores.get(0).getValor(), 0.00001);
-        assertEquals(400, maiores.get(1).getValor(), 0.00001);
-        assertEquals(300, maiores.get(2).getValor(), 0.00001);
+        assertThat(maiores.size(), equalTo(3));
+        assertThat(maiores.get(0).getValor(), equalTo(700.0));
+        assertThat(maiores.get(1).getValor(), equalTo(400.0));
+        assertThat(maiores.get(2).getValor(), equalTo(300.0));
     }
 
     @Test
@@ -175,9 +176,9 @@ public class AvaliadorTeste {
 
         List<Lance> maiores = avaliador.getTresMaiores();
 
-        assertEquals(2, maiores.size());
-        assertEquals(400, maiores.get(0).getValor(), 0.00001);
-        assertEquals(300, maiores.get(1).getValor(), 0.00001);
+        assertThat(maiores.size(), equalTo(2));
+        assertThat(maiores.get(0).getValor(), equalTo(400.0));
+        assertThat(maiores.get(1).getValor(), equalTo(300.0));
     }
 
      @Test(expected = RuntimeException.class)
@@ -189,6 +190,6 @@ public class AvaliadorTeste {
 
         List<Lance> maiores = avaliador.getTresMaiores();
 
-        assertEquals(0, maiores.size());
+        assertThat(maiores.size(), equalTo(0));
     }
 }
