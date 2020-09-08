@@ -5,7 +5,10 @@ import leilao.main.domain.Leilao;
 import leilao.main.domain.Usuario;
 import org.junit.Test;
 
+import static leilao.test.matchers.LeilaoMatcher.temUmLance;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class LeilaoTeste {
 
@@ -14,10 +17,11 @@ public class LeilaoTeste {
         Leilao leilao = new Leilao("Playstation 3");
         assertEquals(0, leilao.getLances().size());
 
-        leilao.propoe(new Lance(new Usuario("trixie"), 3000));
+        Lance lance = new Lance(new Usuario("trixie"), 3000);
+        leilao.propoe(lance);
 
-        assertEquals(1, leilao.getLances().size());
-        assertEquals(3000, leilao.getLances().get(0).getValor(), 0.0001);
+        assertThat(leilao.getLances().size(), equalTo(1));
+        assertThat(leilao, temUmLance(lance));
     }
 
     @Test
